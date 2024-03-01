@@ -1,0 +1,55 @@
+.mainPageWrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.searchbarDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.mainWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+}
+.selectOne {
+  align-items: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: black;
+}
+.btnFlex {
+  display: flex;
+  justify-content: center;
+  gap: 19px;
+}
+.btnStyle {
+  font-size: helvetica;
+  width: 349px;
+  height: 138px;
+  border-radius: 8px;
+  color: black;
+  font-size: 40px;
+  font-weight: 700;
+  border: 3px solid black;
+  background: white;
+}
+
+@media (width >= 600px) and (width<=850px) {
+  .btnStyle {
+    font-size: helvetica;
+    width: 200px;
+    height: 90px;
+    border-radius: 8px;
+    color: black;
+    font-size: 30px;
+    font-weight: 700;
+    border: 2px solid black;
+    background: white;
+  }
+}

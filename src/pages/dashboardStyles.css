@@ -1,0 +1,19 @@
+.pageVisitsStyle{
+    padding-right:0px;
+}
+
+.socialTrafficStyle{
+    padding-right:0px;
+
+}
+
+@media (width >= 991px) {
+    .pageVisitsStyle{
+        padding-right:10px;
+    }
+    
+    .socialTrafficStyle{
+        padding-right:0px;
+        padding-left: 0px;
+    }
+}

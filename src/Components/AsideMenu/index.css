@@ -1,0 +1,93 @@
+.ant-layout-sider-children {
+  background: white !important;
+  border: 3px solid black !important;
+  border-radius: 8px;
+  padding: 13px !important;
+  margin-top: 19px !important;
+  height: 900px !important;
+}
+.ant-layout-sider-trigger {
+  border: 2px solid black !important;
+  background: white !important;
+  margin-bottom: 23px !important;
+  display: none !important;
+}
+.ant-layout-sider-trigger span {
+  color: black !important;
+}
+.anticon .anticon-left {
+  color: black !important;
+}
+.ant-layout-sider {
+  padding-left: 10px;
+  background-color: white !important;
+}
+
+.ant-menu-item {
+  padding-left: 5px !important;
+}
+
+.ant-tooltip-open {
+  /* display: none !important;     */
+}
+.ant-menu-root {
+  margin: 2px !important;
+}
+
+.ant-menu-item:hover {
+  border: 2px solid black;
+  background-color: white !important;
+  padding: 10px;
+}
+
+.ant-menu-item-selected {
+  /* border: 2px solid black; */
+  background-color: white !important;
+  border: 2px solid black;
+  color: black !important;
+  padding: 10px !important;
+}
+
+.menuItem {
+  height: 50px !important;
+}
+
+@media screen and (max-width: 1500px) {
+  .ant-layout-sider-children {
+    height: 800px !important;
+  }
+  .sideBarMenu {
+    margin-top: 40px !important;
+  }
+}
+
+@media (width <= 800px) {
+  .ant-layout-sider-children {
+    background: white !important;
+    border: 3px solid black !important;
+    border-radius: 8px;
+    padding: 0px !important;
+    margin-top: 19px !important;
+    height: auto !important;
+  }
+
+  .ant-layout-sider {
+    padding-left: 5px !important;
+    flex: 0 0 60px !important;
+    max-width: 60px !important;
+    min-width: 60px !important;
+    width: 60px !important;
+  }
+}
+
+@media (width <= 800px) {
+  div.sideBarMenu {
+    display: none !important;
+  }
+  div.logo {
+    display: none !important;
+  }
+  p.sidebarText {
+    display: none;
+  }
+}

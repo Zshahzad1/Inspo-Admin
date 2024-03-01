@@ -1,0 +1,48 @@
+.plateform::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1500px) {
+  .addnew_project {
+    font-size: 13px !important;
+  }
+
+  .content {
+    font-size: 10px !important;
+    line-height: normal !important;
+  }
+
+  .profileBtn {
+    height: 25px;
+    width: 90px;
+    padding: 0 10px;
+  }
+
+  .viewAllBtn {
+    height: 25px;
+    width: 70px;
+    border-radius: 7px !important;
+  }
+  .viewAllBtn p {
+    font-size: 8px !important;
+  }
+  .conversation p:nth-child(1) {
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .addnew_project {
+    font-size: 9px !important;
+  }
+  .content {
+    font-size: 8px !important;
+  }
+  .conversation p:nth-child(1) {
+    font-size: 11px !important;
+  }
+  .conversation span {
+    font-size: 10px !important;
+    line-height: normal !important;
+  }
+}

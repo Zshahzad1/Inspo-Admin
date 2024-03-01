@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* @media (width<=801px)  {
+  .sideBarMenu {
+    display: none;
+  }
+} */
+
+#inputID::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+}
+
+/* Rating */
+
+.scroll-container::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #cccccc; /* color of the scrollbar thumb */
+  border-radius: 3px; /* radius of the scrollbar thumb */
+  border: 1px solid #000000;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* color of the scrollbar track */
+}
+
+.table::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+  /* padding-right: 2px; */
+  height: 8px;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background-color: #cccccc; /* color of the scrollbar thumb */
+  border-radius: 3px; /* radius of the scrollbar thumb */
+  border: 1px solid #000000;
+}
+
+.table::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* color of the scrollbar track */
+}
+
+.conversation::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+  /* padding-right: 2px; */
+  height: 8px;
+}
+.conversation:-webkit-scrollbar-thumb {
+  background-color: #cccccc; /* color of the scrollbar thumb */
+  border-radius: 3px; /* radius of the scrollbar thumb */
+  border: 1px solid #000000;
+}
+
+.conversation::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* color of the scrollbar track */
+}
+
+.name_email_main {
+  width: calc(100% - 146px);
+}
+
+.name_email {
+  width: calc(100% - 60px);
+}
+
+@media screen and (max-width: 1500px) {
+  .name_email_main p:nth-child(1) {
+    font-size: 22px !important;
+  }
+  .name_email_main p:nth-child(2) {
+    font-size: 22px !important;
+  }
+
+  .rating_profile_main .img {
+    width: 110px !important;
+    height: 110px !important;
+  }
+
+  .login_heading {
+    margin-top: 20px !important;
+  }
+
+  .login_heading .heading {
+    font-size: 26px !important;
+  }
+
+  .form_box {
+    margin-top: 30px !important;
+  }
+
+  .form_box .inner_form {
+    margin: 40px 35px 28px 35px !important;
+  }
+
+  .form_box .inner_form input {
+    height: 40px !important;
+  }
+
+  .form_box .inner_form .loginBtn {
+    height: 40px !important;
+  }
+
+  .login_links {
+    margin-top: 20px !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 25px !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .name_email_main p:nth-child(1) {
+    font-size: 18px !important;
+  }
+  .name_email_main p:nth-child(2) {
+    font-size: 18px !important;
+  }
+
+  .rating_profile_main .img {
+    width: 110px !important;
+    height: 110px !important;
+  }
+
+  .login_heading {
+    margin-top: 20px !important;
+  }
+
+  .login_heading .heading {
+    font-size: 26px !important;
+  }
+
+  .form_box {
+    margin-top: 30px !important;
+  }
+
+  .form_box .inner_form {
+    margin: 40px 35px 28px 35px !important;
+  }
+
+  .tabs_buttons {
+    margin-left: 20px;
+    flex-wrap: wrap;
+  }
+
+  .form_box .inner_form input {
+    height: 40px !important;
+  }
+
+  .form_box .inner_form .loginBtn {
+    height: 40px !important;
+  }
+
+  .login_links {
+    margin-top: 20px !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .table {
+    padding: 20px !important;
+  }
+
+  .main_table {
+    min-width: 320px !important;
+  }
+}
+
+input[type="checkbox"] {
+  accent-color: black;
+}
+
+@media screen and (min-width: 1500px) {
+  .container {
+    max-width: unset !important;
+  }
+}

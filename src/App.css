@@ -1,0 +1,95 @@
+/* LOGIN */
+.loginBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  /* padding-top: 15px; */
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.downloadBtn {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  /* padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px; */
+  border: 2px solid black;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 860px) {
+  .loginBox {
+    width: 50vw !important;
+  }
+}
+@media screen and (max-width: 560px) {
+  .loginBox {
+    width: 70vw !important;
+  }
+}
+
+/* DASHBOARD */
+
+.menuIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  height: 30px;
+  width: 30px;
+  background-color: black;
+}
+
+.dashboardBtn {
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  height: 28px;
+  padding: 0px 10px;
+  padding-top: 2px;
+  border: 3px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* PROFILE */
+
+.profileBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 134px;
+  /* padding: 0px 15px; */
+
+  border-radius: 8px;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+.viewAllBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 110px;
+  /* padding: 0px 15px; */
+  border: 1px solid black;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.body {
+  margin: 0px;
+  padding: 0px;
+}
