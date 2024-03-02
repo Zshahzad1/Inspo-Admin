@@ -52,17 +52,6 @@ export default function Dashboard() {
     ],
   };
 
-  const getInfo = async () => {
-    try {
-      const response = await axios.get(
-        `${STRINGS.apiUrl}public/user/today-active-denied`
-      );
-     // setConceptData(response.DashboardStats);
-    } catch (error) {
-      console.log("error");
-    }
-  };
-
   let initialStateBar = {
     options: {
       dataLabels: {
