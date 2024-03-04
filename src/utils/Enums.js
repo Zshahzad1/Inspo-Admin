@@ -17,5 +17,5 @@ export const STRINGS = {
     CONCEPT_APPROVAL_TABLE: "/concept-approval-table",
     INFLUENCER_APPROVAL_TABLE: "/influencer-approval-table",
   },
-  apiUrl: "https://13.200.199.23/api/",
+  apiUrl: "http://13.200.199.23/api/",
 };
