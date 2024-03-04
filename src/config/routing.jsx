@@ -20,11 +20,9 @@ const ConceptApprovalTable = lazy(() =>
   import("../pages/ConceptApproval/ConceptApproval")
 );
 
-const isAuthenticated = () => {
-  // Implement your authentication logic here
-  // For example, you could check if the user is logged in by verifying if there's a token in localStorage
-  return localStorage.getItem("token") !== null;
-};
+// const isAuthenticated = () => {
+//   return localStorage.getItem("token") !== null;
+// };
 
 // isAuthenticated() ? (
 //   <MasterLayout>
@@ -38,7 +36,7 @@ const isAuthenticated = () => {
 //   </SuspensedView>
 // )
 
-console.log("ggggg", isAuthenticated());
+// console.log("ggggg", isAuthenticated());
 
 export default function Routing() {
   return (

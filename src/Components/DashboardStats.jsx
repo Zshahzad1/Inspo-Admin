@@ -1,10 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import { faFile, faGlobe, faUser } from "@fortawesome/free-solid-svg-icons";
 import { STRINGS } from "../utils/Enums";
-
+import axios from "axios";
 export default function DashboardStats() {
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    getUsers();
+    // getPending();
+  }, []);
+  // let currentData = acceptedData[currentIndex];
+
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${STRINGS.apiUrl}public/user/today-active-denied`
+      );
+      setUserData(response.data.data);
+      // setIsData(true);
+    } catch (error) {
+      console.log("error");
+    }
+  };
+  console.log("dashboard", userData);
   return (
     <Container style={{ marginTop: "10px", paddingRight: "0px" }}>
       <Row>

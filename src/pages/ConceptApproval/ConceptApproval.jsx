@@ -19,6 +19,7 @@ import filterImg from "../../assets/Images/filter.png";
 import { json, useNavigate } from "react-router-dom";
 import Search from "../../Components/SearchBar/Search";
 import axios from "axios";
+import { FallingLines } from "react-loader-spinner";
 import * as yup from "yup";
 import { useFormik } from "formik";
 // import { Icon } from "@iconify/react";
@@ -60,7 +61,11 @@ export default function ConceptApproval({ setFlag }) {
     setOpen(false);
     setModalData(null);
   };
+  const [open1, setOpen1] = useState(false);
 
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
   const [conceptData, setConceptData] = useState();
   const [acceptedData, setAcceptedData] = useState();
   const [deniedData, setDeniedData] = useState();
@@ -94,6 +99,7 @@ export default function ConceptApproval({ setFlag }) {
   };
 
   const getAccepted = async () => {
+    setOpen1(true);
     try {
       const response = await axios.get(
         `${STRINGS.apiUrl}public/concept/active-profiles`
@@ -105,6 +111,7 @@ export default function ConceptApproval({ setFlag }) {
   };
 
   const getDenied = async () => {
+    setOpen1(true);
     try {
       const response = await axios.get(
         `${STRINGS.apiUrl}public/concept/denied-profiles`
@@ -1199,6 +1206,44 @@ export default function ConceptApproval({ setFlag }) {
               </p>
             </Box>
           </Box>
+        </Modal>
+
+        <Modal
+          open={open1}
+          onClose={handleClose1}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            // height: "100%",
+          }}
+        >
+          <div
+            className=""
+            // style={}
+          >
+            <div
+              className=""
+              style={{
+                width: "400px",
+                margin: "auto",
+                background: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "20px",
+              }}
+            >
+              <FallingLines
+                color="#4fa94d"
+                width="100"
+                visible={true}
+                ariaLabel="falling-circles-loading"
+              />
+            </div>
+          </div>
         </Modal>
       </div>
     </>

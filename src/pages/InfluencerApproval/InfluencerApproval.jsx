@@ -111,6 +111,8 @@ export default function InfluencerApproval({ setFlag }) {
   };
 
   const getAccepted = async () => {
+    setOpen1(true);
+
     try {
       const response = await axios.get(
         `${STRINGS.apiUrl}public/influencer/active-profiles`
@@ -123,11 +125,13 @@ export default function InfluencerApproval({ setFlag }) {
   };
 
   const getDenied = async () => {
+    setOpen1(true);
     try {
       const response = await axios.get(
         `${STRINGS.apiUrl}public/influencer/denied-profiles`
       );
       setDeniedData(response.data.data?.influencers);
+      setOpen1(false);
     } catch (error) {
       console.log("error");
     }
@@ -269,7 +273,6 @@ export default function InfluencerApproval({ setFlag }) {
                       setIsAccept(!isAccept);
                       setIsDeny(false);
                       getAccepted();
-                      setOpen1(true);
                     }}
                   >
                     ACCEPT
@@ -349,9 +352,6 @@ export default function InfluencerApproval({ setFlag }) {
                 marginRight: "20px",
                 display: "flex",
                 justifyContent: "center",
-              }}
-              onClick={() => {
-                setOpen1(true);
               }}
             >
               {" "}

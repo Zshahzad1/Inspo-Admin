@@ -61,6 +61,7 @@ export default function Ratings() {
       }
     } catch (error) {
       console.log("error");
+      setOpen1(true);
     }
   };
 
@@ -76,6 +77,7 @@ export default function Ratings() {
       }
     } catch (error) {
       console.log("error");
+      setOpen1(true);
     }
   };
 
@@ -91,6 +93,7 @@ export default function Ratings() {
       }
     } catch (error) {
       console.log("error");
+      setOpen1(true);
     }
   };
   const handleNotFound = () => {
@@ -328,6 +331,7 @@ export default function Ratings() {
             display: "flex",
             borderRadius: "12px",
             marginTop: "10px",
+            paddingBottom: "20px",
           }}
         >
           <div className="" style={{ width: "40%" }}>
