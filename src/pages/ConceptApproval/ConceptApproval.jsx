@@ -15,6 +15,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { Facebook } from "@mui/icons-material";
 import Filter from "../../assets/Images/Filter_SVG.svg";
+import Empty_Icon from "../../assets/Images/empty.png";
 import filterImg from "../../assets/Images/filter.png";
 import { json, useNavigate } from "react-router-dom";
 import Search from "../../Components/SearchBar/Search";
@@ -71,6 +72,7 @@ export default function ConceptApproval({ setFlag }) {
   const [deniedData, setDeniedData] = useState();
   const [isData, setIsData] = useState(false);
   const [isDeny, setIsDeny] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -90,11 +92,17 @@ export default function ConceptApproval({ setFlag }) {
   const getConcept = async () => {
     try {
       const response = await axios.get(
-        `${STRINGS.apiUrl}public/concept/inactive-profiles`
+        `${STRINGS.apiUrl}public/concept/inactive-profiles`,
+        {
+          headers: {
+            Origin: "http://localhost:3000", // This allows requests from any origin
+            // If possible, replace '*' with the specific origin that is allowed to access the resource
+          },
+        }
       );
       setConceptData(response.data.data?.concept);
     } catch (error) {
-      console.log("error");
+      console.error(error);
     }
   };
 
@@ -105,6 +113,7 @@ export default function ConceptApproval({ setFlag }) {
         `${STRINGS.apiUrl}public/concept/active-profiles`
       );
       setAcceptedData(response.data.data?.concept);
+      setOpen1(false);
     } catch (error) {
       console.log("error");
     }
@@ -117,6 +126,7 @@ export default function ConceptApproval({ setFlag }) {
         `${STRINGS.apiUrl}public/concept/denied-profiles`
       );
       setDeniedData(response.data.data?.concept);
+      setOpen1(false);
     } catch (error) {
       console.log("error");
     }
@@ -156,7 +166,7 @@ export default function ConceptApproval({ setFlag }) {
   // }
   const [switchToggle, setSwitchToggle] = useState(true);
   let navigate = useNavigate();
-  console.log("concepttt", deniedData);
+  console.log("concepttt", conceptData);
 
   return (
     <>
@@ -454,65 +464,124 @@ export default function ConceptApproval({ setFlag }) {
             <TableBody>
               {isDeny ? (
                 <>
-                  {" "}
-                  {deniedData?.map((concept) => {
-                    return (
+                  {isEmpty ? (
+                    <>
                       <TableRow
-                        key={concept?._id}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
+                        style={
+                          {
+                            // display: "flex",
+                            // justifyContent: "center",
+                            // width: "",
+                          }
+                        }
                       >
-                        <TableCell component="th" scope="row">
+                        <TableCell colSpan={5} component="th" scope="row">
                           <div
                             style={{
                               display: "flex",
-                              justifyContent: "flex-start",
+                              justifyContent: "center",
+                              flexDirection: "column",
                               alignItems: "center",
-                              gap: "10px",
+                              gap: "20px",
                             }}
                           >
-                            <img
+                            <div className="icon" style={{ width: "200px" }}>
+                              <img src={Empty_Icon} alt="" width="100%" />
+                            </div>
+                            <p
                               style={{
-                                height: "40px",
-                                width: "40px",
-                                borderRadius: "10px",
-                              }}
-                              src={profilePic}
-                            />
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                width: "150px",
+                                fontFamily: STRINGS.FONTS.HELVITICA,
+                                fontWeight: "700",
                               }}
                             >
-                              <p style={{ margin: "0px", fontWeight: "700" }}>
-                                {concept?.name}
-                              </p>
-                              <p style={{ margin: "0px" }}>{concept?.email}</p>
-                            </div>
+                              Denied request not found
+                            </p>
+                            <p
+                              style={{
+                                fontFamily: STRINGS.FONTS.HELVITICA,
+                                fontWeight: "700",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                setIsDeny(false);
+                                setIsData(false);
+                              }}
+                            >
+                              Retry
+                            </p>
                           </div>
                         </TableCell>
-                        <TableCell
-                          style={{
-                            fontFamily: STRINGS.FONTS.HELVITICA,
-                            fontWeight: "700",
-                            textTransform: "uppercase",
-                          }}
-                          align="center"
-                        >
-                          CONCEPT
-                        </TableCell>
-                        <TableCell align="center">
-                          <div
-                            style={{
-                              display: "flex",
-                              gap: "10px",
-                              justifyContent: "center",
+                        {/* <TableCell component="th" scope="row"></TableCell>
+                        <TableCell component="th" scope="row"></TableCell>
+                        <TableCell component="th" scope="row"></TableCell>
+                        <TableCell component="th" scope="row"></TableCell> */}
+                      </TableRow>
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      {deniedData?.map((concept) => {
+                        return (
+                          <TableRow
+                            key={concept?._id}
+                            sx={{
+                              "&:last-child td, &:last-child th": { border: 0 },
                             }}
                           >
-                            {/* <button
+                            <TableCell component="th" scope="row">
+                              <div
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "flex-start",
+                                  alignItems: "center",
+                                  gap: "10px",
+                                }}
+                              >
+                                <img
+                                  style={{
+                                    height: "40px",
+                                    width: "40px",
+                                    borderRadius: "10px",
+                                  }}
+                                  src={profilePic}
+                                />
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    width: "150px",
+                                  }}
+                                >
+                                  <p
+                                    style={{ margin: "0px", fontWeight: "700" }}
+                                  >
+                                    {concept?.name}
+                                  </p>
+                                  <p style={{ margin: "0px" }}>
+                                    {concept?.email}
+                                  </p>
+                                </div>
+                              </div>
+                            </TableCell>
+                            <TableCell
+                              style={{
+                                fontFamily: STRINGS.FONTS.HELVITICA,
+                                fontWeight: "700",
+                                textTransform: "uppercase",
+                              }}
+                              align="center"
+                            >
+                              CONCEPT
+                            </TableCell>
+                            <TableCell align="center">
+                              <div
+                                style={{
+                                  display: "flex",
+                                  gap: "10px",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                {/* <button
                               style={{
                                 backgroundColor: "#A9FF74",
                                 border: "none",
@@ -527,56 +596,58 @@ export default function ConceptApproval({ setFlag }) {
                             >
                               ACCEPT
                             </button> */}
-                            <button
-                              style={{
-                                backgroundColor: "#FF0000",
-                                border: "none",
-                                height: "40px",
-                                width: "90px",
-                                borderRadius: "6px",
-                                fontFamily: STRINGS.FONTS.HELVITICA,
-                                fontSize: "10px",
-                                fontWeight: "700",
-                              }}
-                              onClick={() => Reject(concept._id)}
-                            >
-                              DENY
-                            </button>
-                          </div>
-                        </TableCell>
-                        <TableCell align="center">
-                          <p
-                            style={{
-                              fontFamily: STRINGS.FONTS.HELVITICA,
-                              fontWeight: "700",
-                              fontSize: "14px",
-                            }}
-                          >
-                            {concept.createdAt?.slice(0, 10)}
-                          </p>
-                        </TableCell>
-                        <TableCell align="center">
-                          <div
-                            style={{ cursor: "pointer" }}
-                            onClick={() => {
-                              setOpen(true);
-                              setModalData(concept);
-                            }}
-                          >
-                            <p
-                              style={{
-                                fontFamily: STRINGS.FONTS.HELVITICA,
-                                fontWeight: "700",
-                                fontSize: "14px",
-                              }}
-                            >
-                              VIEW
-                            </p>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                                <button
+                                  style={{
+                                    backgroundColor: "#FF0000",
+                                    border: "none",
+                                    height: "40px",
+                                    width: "90px",
+                                    borderRadius: "6px",
+                                    fontFamily: STRINGS.FONTS.HELVITICA,
+                                    fontSize: "10px",
+                                    fontWeight: "700",
+                                  }}
+                                  onClick={() => Reject(concept._id)}
+                                >
+                                  DENY
+                                </button>
+                              </div>
+                            </TableCell>
+                            <TableCell align="center">
+                              <p
+                                style={{
+                                  fontFamily: STRINGS.FONTS.HELVITICA,
+                                  fontWeight: "700",
+                                  fontSize: "14px",
+                                }}
+                              >
+                                {concept.createdAt?.slice(0, 10)}
+                              </p>
+                            </TableCell>
+                            <TableCell align="center">
+                              <div
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                  setOpen(true);
+                                  setModalData(concept);
+                                }}
+                              >
+                                <p
+                                  style={{
+                                    fontFamily: STRINGS.FONTS.HELVITICA,
+                                    fontWeight: "700",
+                                    fontSize: "14px",
+                                  }}
+                                >
+                                  VIEW
+                                </p>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </>
+                  )}
                 </>
               ) : isData ? (
                 <>

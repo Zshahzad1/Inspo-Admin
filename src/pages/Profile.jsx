@@ -13,9 +13,11 @@ import terms from "../assets/Images/Terms.svg";
 import project from "../assets/Images/Projects.svg";
 import { styled } from "@mui/material/styles";
 import avature from "../assets/Images/Avature.png";
+import { remove } from "../redux/tokenSlice";
 import "./Profile.css";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 36,
   height: 18,
@@ -67,6 +69,8 @@ export default function Profile() {
   const token = useSelector((state) => state.token.token);
   const [profileData, setProfileData] = useState({});
   const [check, setcheck] = useState(false);
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   useEffect(() => {
     getProfile();
     // console.log(fetchData());
@@ -85,6 +89,11 @@ export default function Profile() {
     } catch (error) {
       console.log("error");
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(remove({ token: null }));
+    navigate(STRINGS.ROUTES.LOGIN);
   };
 
   console.log("check", profileData);
@@ -237,6 +246,22 @@ export default function Profile() {
                           PROJECTS
                         </p>
                       </div>
+                      <button
+                        style={{
+                          background: "white",
+                          color: "black",
+                          border: "1px solid black",
+                          borderRadius: "12px",
+                          width: "83px",
+                          height: "24px",
+                          fontFamily: STRINGS.FONTS.HELVITICA,
+                          fontSize: "10px",
+                          fontWeight: "700",
+                        }}
+                        onClick={() => handleLogout()}
+                      >
+                        LOGOUT
+                      </button>
                     </div>
                   </Col>
                 </Row>

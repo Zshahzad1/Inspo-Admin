@@ -314,7 +314,13 @@ export default function Ratings() {
               </button>
               <div
                 className="filter"
-                style={{ width: "16px", height: "16px", marginRight: "20px" }}
+                style={{
+                  width: "16px",
+                  height: "16px",
+                  marginRight: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
               >
                 {" "}
                 <img src={Filter} alt="" width={{ width: "100%" }} />
@@ -411,7 +417,7 @@ export default function Ratings() {
                   flexDirection: "column",
                   gap: "18px",
                   overflowY: "scroll",
-                  overflowX: "scroll",
+                  // overflowX: "scroll",
                   paddingTop: "20px",
                   paddingLeft: "9px",
                 }}

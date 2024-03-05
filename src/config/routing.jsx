@@ -1,10 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import React, { lazy, Suspense } from "react";
 import Loading from "../pages/Loading";
 import { STRINGS } from "../utils/Enums";
 import MasterLayout from "../layout/masterLayout";
 import Approvel from "../pages/Approval/Approval";
 import Approval from "../pages/Approval/Approval";
+import { useSelector } from "react-redux";
 
 const Login = lazy(() => import("../pages/Login"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -20,25 +26,43 @@ const ConceptApprovalTable = lazy(() =>
   import("../pages/ConceptApproval/ConceptApproval")
 );
 
-// const isAuthenticated = () => {
-//   return localStorage.getItem("token") !== null;
-// };
-
-// isAuthenticated() ? (
-//   <MasterLayout>
-//     <SuspensedView>
-//       <Dashboard />
-//     </SuspensedView>
-//   </MasterLayout>
-// ) : (
-//   <SuspensedView>
-//     <Login />
-//   </SuspensedView>
-// )
-
 // console.log("ggggg", isAuthenticated());
 
 export default function Routing() {
+  const token = useSelector((state) => state.token.token);
+
+  const isAuthenticated = () => {
+    return token == null;
+  };
+
+  // isAuthenticated() ? (
+  //   <MasterLayout>
+  //     <SuspensedView>
+  //       <Dashboard />
+  //     </SuspensedView>
+  //   </MasterLayout>
+  // ) : (
+  //   <SuspensedView>
+  //     <Login />
+  //   </SuspensedView>
+  // );
+
+  // const ProtectedRoute = ({ path, element: Element }) => {
+  //   return isAuthenticated() ? (
+  //     <SuspensedView>
+  //       <Login />
+  //     </SuspensedView>
+  //   ) : (
+  //     <MasterLayout>
+  //       <SuspensedView>
+  //         <Dashboard />
+  //       </SuspensedView>
+  //     </MasterLayout>
+  //   );
+  // };
+
+  console.log("pro", isAuthenticated());
+
   return (
     <>
       <Router>
@@ -51,7 +75,11 @@ export default function Routing() {
               </SuspensedView>
             }
           />
-
+          {/* <Route /> */}
+          {/* <Route
+            path={`${STRINGS.ROUTES.DASHBOARD}`}
+            element={<ProtectedRoute />}
+          /> */}
           <Route
             path={`${STRINGS.ROUTES.DASHBOARD}`}
             element={
@@ -62,6 +90,7 @@ export default function Routing() {
               </MasterLayout>
             }
           />
+          {/* Other routes */}
           <Route
             path={`${STRINGS.ROUTES.TABLES}`}
             element={

@@ -1,5 +1,5 @@
 import { Switch } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { json, useNavigate } from "react-router-dom";
 import {
   Button,
@@ -37,6 +37,7 @@ const validationSchema = yup.object().shape({
 
 export default function Login() {
   const label = { inputProps: { "aria-label": "Color switch demo" } };
+  const [showPassword, setshowPassword] = useState(false);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
